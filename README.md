@@ -60,7 +60,7 @@ The entire query is  combined using the “id” column from the users_customuse
 
 ## Challenges
 
-The major challenge was found in the adaptability of the sql script which contained the creation of the tables and databases on other servers aside MySQL as it took a long time to eventually figured that certain functions like LARGETEXT which is a data type used in building the table were only used in the MYSQL server. 
+The major challenge was found in the adaptability of the sql script which contained the creation of the tables and databases on other servers aside MySQL as it took a long time to eventually figure that certain functions like LARGETEXT which is a data type used in building the table were only used in the MYSQL server, upon which MYSQL was installed and the script as ran successfully.
 
 Other difficulties were in writing nested queries in Assessment_Q4.sql for the estimated_clv column and combining it with the frequency column to be generated.
 
