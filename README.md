@@ -46,15 +46,16 @@ Grouped by the plan_id column with a clause to render only information with inac
 
 ### Assessment_Q4.sql
 
-For this as well, five entries were required which were to be queried using the users_customuser table and the savings_savingsaccount table:
+A slightly different approach is used for this. While the five entries to be made were all put into consideration, the WITH clause is first used as a form of reference in order to bypass aggregate function errors in the GROUP BY and Subqueries.
 
-1. customer_id: This gotten from the “id” column of the users_customuser table.
-2. name: This was queried from the users_customuser table, using the CONCAT function to combine the first_name and last name columns of the customers information.
-3. tenure_months: This was calculated using the time
-4. total_transactions: Calculate using the COUNT function on the transaction_date column of the savings_savingsaccount table
-5. estimated_clv: Considering that this is (total_transactions / tenure_months) * 12 * avg_profit_per_transaction, the total transaction was gotten by counting the transaction_date column of the savings_savingsaccount table. tenure_month is calculated as the difference in timestamp for MAX and MIN values. The AVG function is used to find the average profit per transaction considering that profit_per_transaction = 0.1*(confirmed_amount). With confirmed amount being a column on the savings_savingsaccount table.
+1. customer_id: This gotten from the “id” column of the users_customuser table and identified in the with clause which serves as a reference for the SELECT statement.
+2. name: This was queried from the users_customuser table, using the CONCAT function to combine the first_name and last name columns of the customers information and like the is, it is referenced as well.
+3. tenure_months: This was calculated using the date_joined column in the users_customuser table in reference to the current_timestamp function in MySQL.
+4. total_transactions: Calculate using the COUNT function on the transaction_date column of the savings_savingsaccount table. Also referenced in the WITH clause.
+5. estimated_clv: Considering that this is (total_transactions / tenure_months) * 12 * avg_profit_per_transaction, the total transaction was gotten by counting the transaction_date column of the savings_savingsaccount table. tenure_month is calculated as the difference in timestamp for date_joined and current_timestamp values. The AVG function is used to find the average profit per transaction considering that profit_per_transaction = 0.1*(confirmed_amount). With confirmed_amount being a column on the savings_savingsaccount table.
 
-The entire query is  combined using the “id” column from the users_customuser table and the owner_id column from the savings_savingsaccount table. Grouped by customer_id, and ordered by estimated_clv in descending order. Using the DESC function.l after the ORDER BY clause
+A GROUP BY function is used to group the display in the with clause where the Join statement was also made to combine the savings_savingsaccount table and the users_customuser table.
+
 
 
 
