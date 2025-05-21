@@ -19,13 +19,13 @@ The entire query is grouped by the owner_id and the HAVING clause is used to fil
 
 ### Assessment_Q2.sql
 
-A similar approach to assessment one is used, where each entry to be made is considered. In this case only two tables were considered, users_customuser, and savings_savingsaccount, for the following entries: 
+A similar approach to assessment one is used, where each entry to be made is considered. In this case only two tables were considered, users_customuser, and savings_savingsaccount. However, seeing that all information required could be gotten from savings_savingsaccount alone, I made it using this table.
 
-1. Frequency_category: A case was made which delivers an impute based on the criteria given in the assessment description: "High Frequency" (≥10 transactions/month), "Medium Frequency" (3-9 transactions/month), "Low Frequency" (≤2 transactions/month). The transaction was spelled as the total number of transaction_date from the savings_savingsaccount table and the month was calculated using the TIMESTAMPDIFF.
-2. customer_count: Calculated using the  “id” column from the users_customuser table and a COUNT function was applied.
-3. avg_transaction_per_month: Calculated by getting the average of the division between the total transaction and the total number of month for each transaction.
+1. Frequency_category: A case was made which delivers an impute based on the criteria given in the assessment description: "High Frequency" (≥10 transactions/month), "Medium Frequency" (3-9 transactions/month), "Low Frequency" (≤2 transactions/month). A nested query was used to derive the transaction per month used in the frequency rendering.
+2. customer_count: Calculated using the  “owner_id” column from the savings_savingsaccount table and a COUNT function was applied. The information was fetched from a nested query (sub query).
+3. avg_transaction_per_month: Calculated by counting the number of transaction dates, grouping the with the unique customers and then dividing the number of transactions by 12 months.
 
-It was joined using the WHERE clause on the “id” column of the users_customuser and the owner_id from the  savings_savingsaccount table.
+Query was GROUPED BY the frequency to combine all the highs, mediums, and lows, respectively. ORDER BY the average transaction per month to display in descending order of frequency.
 
 
 
