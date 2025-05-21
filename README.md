@@ -60,8 +60,8 @@ The entire query is  combined using the “id” column from the users_customuse
 
 ## Challenges
 
-The major challenge was found in the adaptability of the sql script which contained the creation of the tables and databases on other servers aside MySQL as it took a long time to eventually figure that certain functions like LARGETEXT which is a data type used in building the table were only used in the MYSQL server, upon which MYSQL was installed and the script as ran successfully.
+The major challenge was found in the adaptability of the sql script which contained the creation of the tables and databases on other servers aside MySQL as it took a long time to eventually figure that certain functions like LARGETEXT which is a data type used in building the table were only used in the MYSQL server, hence the clue to switch to the MySQL server, which worked very fine.
 
-Other difficulties were in writing nested queries in Assessment_Q4.sql for the estimated_clv column and combining it with the frequency column to be generated.
+Other difficulties were in writing and the complexity of getting by aggregate functions limiting my entries to an OK report with no table fetched. In Assessment_Q3.sql and Assessment_Q4 the difficulty go getting by nested and subqueries also proved to have been a challenge.
 
-Other minor difficulties like having to understand peculiar use of functions like TIMESTAMPDIFF instead of DATEDIFF which is used in other servers also were to be mentions.
+Many other difficulties were in the inability to accrue all the information required from the designated table to be used for each questions. Like how inactive days could best be gotten from the difference between the last login and the current timestamp however the table in which the last login information is wasn’t recommended in the assessment overview.
